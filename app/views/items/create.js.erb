@@ -1,0 +1,9 @@
+<% if @item.valid? %>
+  $('.js-items').append("<%= escape_javascript(render(@item)) %>");
+  $('.new-item').html("<%= escape_javascript(render partial: 'items/form', locals: { user: @user, item: @new_item }) %>");
+  $('.flash').html("<%= escape_javascript(render partial: 'layouts/flash', locals: { flash: flash }) %>");
+<% else %>
+  $('.new-item').html("<%= escape_javascript(render partial: 'items/form', locals: { user: @user, item: @item }) %>");
+  $('.flash').html("<%= escape_javascript(render partial: 'layouts/flash', locals: { flash: flash }) %>");
+  $('#flashnotice').focus();
+<% end %>

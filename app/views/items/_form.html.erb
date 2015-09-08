@@ -1,0 +1,22 @@
+<p></p>
+<%= form_for [@user, item], remote: true do |f| %>
+
+  <% if item.errors.any? %>
+     <div class="alert alert-danger">
+       <h4><%= pluralize(item.errors.count, "error") %>:</h4>
+       <ul>
+         <% item.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+
+   <div class="form-group">
+     <%= f.text_area :name, rows: 2, class: 'form-control', placeholder: "enter new to-do item" %>
+   </div>
+   <div class="form-group">
+     <%= f.submit "submit", class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<% if @item.destroyed? %>
+  $('#item-' +<%= @item.id %>).fadeOut("slow");
+  $('.js-items-count').html("<%= pluralize(@item.user.items.count, 'to-do items') %>");
+  $('.flash').html("<%= escape_javascript(render partial: 'layouts/flash', locals: { flash: flash }) %>");
+<% else %>
+  $('.flash').html("<%= escape_javascript(render partial: 'layouts/flash', locals: { flash: flash }) %>");
+  $('#flashnotice').focus();
+<% end %>
