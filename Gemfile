@@ -73,6 +73,9 @@ gem 'newrelic_rpm'
 #task scheduler
 gem 'whenever', :require => false
 
+#serialization for JSON
+gem 'active_model_serializers', '0.9.2'
+
 #testing frameworks
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

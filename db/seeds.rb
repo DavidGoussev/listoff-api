@@ -11,9 +11,21 @@ require 'faker'
   end
   users = User.all
 
+
+  10.times do
+    list = List.create!(
+      user:  users.sample,
+      title: Faker::Lorem.sentence
+    )
+  end
+  lists = List.all
+
+
+
   50.times do
     item = Item.create!(
       user:   users.sample,
+      list:   lists.sample,
       name:   Faker::Lorem.sentence
     )
     item.update_attributes(created_at: rand(10.minutes .. 1.year).ago)
@@ -38,4 +50,5 @@ require 'faker'
 
   puts "seed finished!"
   puts "#{User.count} users created"
+  puts "#{List.count} lists created"
   puts "#{Item.count} items created"
