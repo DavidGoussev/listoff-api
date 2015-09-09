@@ -12,7 +12,7 @@ require 'faker'
   users = User.all
 
 
-  10.times do
+  12.times do
     list = List.create!(
       user:  users.sample,
       title: Faker::Lorem.sentence
