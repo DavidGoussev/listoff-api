@@ -1,4 +1,6 @@
 class Api::UsersController < ApiController
+  before_action :check_auth
+
   def index
     return permission_denied_error unless conditions_met
 

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :users, only: [:update, :show] do
     resources :items, only: [:create, :destroy]
   end
-  
+
+  namespace :api, defaults: { format: :json } do
+    resources :users
+  end
+
   get 'about' => 'welcome#about'
   root to: 'welcome#index'
 
