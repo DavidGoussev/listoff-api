@@ -14,7 +14,9 @@
 
 
    <div class="form-group">
-     <%= f.text_area :title, rows: 2, class: 'form-control', placeholder: "enter new to-do list" %>
+     <%= f.text_area :title, rows: 1, class: 'form-control', placeholder: "enter new to-do list" %>
+     <%= f.text_area :permissions, rows: 1, class: 'form-control', placeholder: "enter list permissions" %>
+
    </div>
    <div class="form-group">
      <%= f.submit "new list", class: 'btn-s btn-success' %>
