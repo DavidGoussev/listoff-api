@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  # resources :users, shallow: true do
+  #   resources :lists do
+  #     resources :items
+  #   end
+  # end
+
   resources :users, only: [:update, :show] do
     resources :lists, only: [:create, :destroy]
   end

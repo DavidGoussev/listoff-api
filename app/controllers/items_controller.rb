@@ -5,10 +5,17 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def index
+    @item = Item.all
+  end
+
   def create
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @list = List.find(params[:list_id])
     @item = current_user.items.build(item_params)
-    @items = @user.items
+    @item.list = @list
+    @items = @list.items
+
     @new_item = Item.new
 
     if @item.save
@@ -27,8 +34,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @item = @user.items.find(params[:id])
+    @list = List.find(params[:list_id])
+    @item = @list.items.find(params[:id])
 
     if @item.destroy
       flash.now[:notice] = "item was removed"

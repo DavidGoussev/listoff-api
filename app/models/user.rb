@@ -21,6 +21,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  avatar                 :string
+#  item_id                :integer
 #
 
 class User < ActiveRecord::Base

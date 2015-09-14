@@ -1,5 +1,8 @@
 <%= content_tag :div, class: 'media', id: "item-#{item.id}" do %>
-  <h5><%= item.name %>  <%= link_to "", [item.user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></h5>
+
+
+
+  <%= item.name %>  <%= link_to "", [item.list, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
   <small>
     submitted <%= time_ago_in_words(item.created_at) %> ago; <%= (item.days_left) %> days left
   </small>

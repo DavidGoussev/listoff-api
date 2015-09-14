@@ -1,6 +1,6 @@
 require 'faker'
 
-  10.times do
+  5.times do
     user = User.new(
       name:     Faker::Name.name,
       email:    Faker::Internet.email,
@@ -12,7 +12,7 @@ require 'faker'
   users = User.all
 
 
-  12.times do
+  20.times do
     list = List.create!(
       user:  users.sample,
       title: Faker::Lorem.sentence

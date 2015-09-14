@@ -33,7 +33,7 @@ class Api::UsersController < ApiController
   end
 
 
-  
+
   private
 
   def user_params

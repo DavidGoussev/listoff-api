@@ -11,6 +11,7 @@
       <small>
           <li>account created <%= @user.created_at.strftime("%m/%d/%Y") %></li>
           <li>last signed in <%= time_ago_in_words(@user.created_at) %> ago</li>
+          <li><%= pluralize(@user.lists.count, 'to-do lists') %></li>
           <li><div class='js-items-count'><%= pluralize(@user.items.count, 'to-do item') %></div></li>
       </small>
       <p>
@@ -23,14 +24,11 @@
 
   <div class="col-md-8">
     <div class="jumbotron">
-      <h2>to-do items</h2>
+      <h2>to-do lists</h2>
 
-    <div class='js-items'>
-      <%= render partial: 'items/item', collection: @user.items %>
-    </div>
-    <div class='new-item'>
-      <%= render partial: 'items/form', locals: {item: @item} %>
-    </div>
+    <%= render partial: 'lists/list', collection: @user.lists %>
+
+    <%= render partial: 'lists/form', locals: {list: @list} %>
 
     </div>
   </div>

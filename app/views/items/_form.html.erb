@@ -1,5 +1,5 @@
 <p></p>
-<%= form_for [@user, item], remote: true do |f| %>
+<%= form_for [list, item], remote: true do |f| %>
 
   <% if item.errors.any? %>
      <div class="alert alert-danger">
@@ -14,9 +14,10 @@
 
 
    <div class="form-group">
-     <%= f.text_area :name, rows: 2, class: 'form-control', placeholder: "enter new to-do item" %>
+     <%= f.text_area :name, rows: 1, class: 'form-control', placeholder: "enter item" %>
    </div>
    <div class="form-group">
-     <%= f.submit "submit", class: 'btn btn-success' %>
+     <%= f.submit "new item", class: 'btn-xs btn-success' %>
   </div>
+
 <% end %>

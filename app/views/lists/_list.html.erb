@@ -1,0 +1,12 @@
+<%= content_tag :div, class: 'media', id: "list-#{list.id}" do %>
+  <h4><%= list.title %>    <small> <%= link_to "delete", [list.user, list], method: :delete %></small></h4>
+
+  <div class=<%="js-items-#{list.id}"%>>
+    <%= render partial: 'items/item', collection: list.items %>
+  </div>
+
+  <div class=<%="new-item-#{list.id}"%>>
+    <%= render partial: 'items/form', locals: {list: list, item: @item} %>
+  </div>
+
+<% end %>

@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150909033145) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
+    t.string   "permissions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"

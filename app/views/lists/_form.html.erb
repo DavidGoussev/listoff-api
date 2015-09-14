@@ -1,0 +1,22 @@
+<p></p>
+<%= form_for [@user, list] do |f| %>
+
+  <% if list.errors.any? %>
+     <div class="alert alert-danger">
+       <h4><%= pluralize(list.errors.count, "error") %>:</h4>
+       <ul>
+         <% list.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+
+   <div class="form-group">
+     <%= f.text_area :title, rows: 2, class: 'form-control', placeholder: "enter new to-do list" %>
+   </div>
+   <div class="form-group">
+     <%= f.submit "new list", class: 'btn-s btn-success' %>
+  </div>
+<% end %>
