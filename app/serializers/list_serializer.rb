@@ -11,7 +11,7 @@
 #
 
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :list_title, :created_at
+  attributes :id, :list_title, :permissions, :created_at
 
   def list_title
     object.title
