@@ -42,4 +42,8 @@ class Api::ListsController < ApiController
     params.require(:list).permit(:title, :permissions)
   end
 
+  def list_params_validated
+    params.require(:list).permit(:title, permissions: ["private", "viewable", "open"])
+  end
+
 end

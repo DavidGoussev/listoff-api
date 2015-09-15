@@ -1,6 +1,6 @@
 <%= content_tag :div, class: 'media', id: "list-#{list.id}" do %>
   <h4><%= list.title %>    <small> <%= link_to "delete", [list.user, list], method: :delete %></small></h4>
-
+  <small><%= list.permissions %></small>
   <div class=<%="js-items-#{list.id}"%>>
     <%= render partial: 'items/item', collection: list.items %>
   </div>
