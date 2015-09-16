@@ -16,14 +16,27 @@ class List < ActiveRecord::Base
 
   #validates_inclusion_of :permissions, in: %w(private viewable open), :on => :update, :message => "value %s is invalid!"
 
-  validate :validate_permissions, :on => :update
+  validate :validate_editable, :validate_permissions, :on => :update
+
+  default_scope { order(created_at: :asc) }
+
+  def editable?
+    self.permissions == ["private", "viewable", "open"]
+  end
+
 
   private
 
   def validate_permissions
       unless ["private",  "viewable", "open"].include?(self.permissions)
-        errors.add(:base, "Permission denied!")
+        errors.add(:base, "Permission to update denied!")
       end
+  end
+
+  def validate_editable
+    unless editable?
+      errors.add(:base, "entry not editable!")
+    end
   end
 
 
