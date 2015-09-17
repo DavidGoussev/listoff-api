@@ -1,6 +1,6 @@
 class Api::ItemsController < ApiController
   before_action :check_auth
-  before_filter :item_owned?, :on => [:create, :update, :destroy]
+  before_filter :item_owned?, only: [:update, :destroy]
 
   def index
     items = Item.all
@@ -48,6 +48,7 @@ private
   end
 
   def item_owned?
+    item = Item.find(params[:id])
     item.user == current_user
   end
 

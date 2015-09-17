@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       resources :items, only: [:create]
     end
 
-    resources :items, only: [:destroy]
+    resources :items, only: [:destroy, :index]
   end
 
   get 'about' => 'welcome#about'

@@ -1,6 +1,6 @@
 class Api::ListsController < ApiController
   before_action :check_auth
-  before_filter :list_owned?, :on => [:create, :update, :destroy]
+  before_filter :list_owned?, :on => [:update, :destroy]
 
   def index
     lists = List.all
@@ -50,11 +50,12 @@ class Api::ListsController < ApiController
     params.require(:list).permit(:title, :permissions)
   end
 
-  def list_params_validated
-    params.require(:list).permit(:title, permissions: ["private", "viewable", "open"])
-  end
+  # def list_params_validated
+  #   params.require(:list).permit(:title, permissions: ["private", "viewable", "open"])
+  # end
 
   def list_owned?
+    list = List.find(params[:id])
     list.user == current_user
   end
 
