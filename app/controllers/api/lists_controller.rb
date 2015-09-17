@@ -1,5 +1,13 @@
 class Api::ListsController < ApiController
   before_action :check_auth
+  before_filter :list_owned?, :on => [:create, :update, :destroy]
+
+  def index
+    lists = List.all
+
+    render json: lists, each_serializer: ListSerializer
+
+  end
 
   def create
     list = List.new(list_params)
@@ -44,6 +52,10 @@ class Api::ListsController < ApiController
 
   def list_params_validated
     params.require(:list).permit(:title, permissions: ["private", "viewable", "open"])
+  end
+
+  def list_owned?
+    list.user == current_user
   end
 
 end

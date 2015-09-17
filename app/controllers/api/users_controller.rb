@@ -43,4 +43,6 @@ class Api::UsersController < ApiController
   def conditions_met
     true # We're not calling this an InsecureUserSerializer for nothing
   end
+
+
 end

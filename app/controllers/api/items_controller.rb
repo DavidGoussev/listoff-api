@@ -1,5 +1,12 @@
 class Api::ItemsController < ApiController
   before_action :check_auth
+  before_filter :item_owned?, :on => [:create, :update, :destroy]
+
+  def index
+    items = Item.all
+
+    render json: items, each_serializer: ItemSerializer
+  end
 
   def create
     item = Item.new(item_params)
@@ -38,6 +45,10 @@ private
 
   def item_params
     params.require(:item).permit(:name)
+  end
+
+  def item_owned?
+    item.user == current_user
   end
 
 end
